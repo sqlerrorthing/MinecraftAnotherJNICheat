@@ -3,6 +3,19 @@
 //
 
 #include "../Hooks.hpp"
+#include "../../features/FeatureManager.h"
+#include "../../features/impl/movement/NoPush.h"
+
+jmethodID ClientPlayerEntityHooks::original_push_out_of_blocks_methodID;
+void ClientPlayerEntityHooks::hkPushOutOfBlocks(JNIEnv *env, jobject obj, jdouble x, jdouble y) {
+    if (auto noPush = FeatureManager::getInstance().findFeatureByClass<NoPush>();
+        noPush->isEnabled() && noPush->remove.is("Blocks")
+    ) {
+        return;
+    }
+
+    env->CallNonvirtualVoidMethod(obj, ClientPlayerEntity::self(), original_push_out_of_blocks_methodID, x, y);
+}
 
 jmethodID ClientPlayerEntityHooks::original_tick_methodID;
 void ClientPlayerEntityHooks::hkTick(JNIEnv *env, jobject obj) {

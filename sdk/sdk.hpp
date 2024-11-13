@@ -54,17 +54,8 @@ public:
         }
 
         jclass objectClass = env->FindClass("java/lang/Object");
-        if (objectClass == nullptr) {
-            return false;
-        }
-
         jmethodID equalsMethod = env->GetMethodID(objectClass, "equals", "(Ljava/lang/Object;)Z");
-        if (equalsMethod == nullptr) {
-            return false;
-        }
-
-        jboolean areEqual = env->CallBooleanMethod(obj1, equalsMethod, obj2);
-        return areEqual == JNI_TRUE;
+        return env->CallBooleanMethod(obj1, equalsMethod, obj2);
     }
 
     static Mappings selectedMapping;

@@ -57,6 +57,9 @@ add_library(MinecraftAnotherJNICheat SHARED src/main.cpp
         src/hooks/hooks/KeyboardHooks.cpp
         src/hooks/hooks/ClientPlayerEntityHooks.cpp
         src/hooks/hooks/ClientConnectionHooks.cpp
+        src/hooks/hooks/EntityHooks.cpp
+        src/features/impl/render/FullBright.h
+        src/hooks/hooks/LightmapTextureManagerHooks.cpp
 )
 
 include_directories(${JNI_INCLUDE_DIRS})

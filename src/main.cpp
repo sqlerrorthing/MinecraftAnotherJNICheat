@@ -8,10 +8,17 @@
 
 #define VERSION 1.21
 
+
 using namespace fmt;
 
 static FILE* p_o_File {nullptr};
 static FILE* p_r_File {nullptr};
+
+void stopConsole() {
+    fclose(p_o_File);
+    fclose(p_r_File);
+    FreeConsole();
+}
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "cppcoreguidelines-pro-type-static-cast-downcast"
@@ -42,6 +49,9 @@ void mainThread(HMODULE instance) {
             JSTRING_TO_STD_STRING(MinecraftClient::get_field_gameVersion(mc)),
             JSTRING_TO_STD_STRING(MinecraftClient::get_field_versionType(mc)));
 
+    println("[+] Initializing features");
+    FeatureManager::getInstance().init();
+
     if(Hooks::init() != 0) {
         FreeLibrary(instance);
         return;
@@ -49,9 +59,6 @@ void mainThread(HMODULE instance) {
 
     println("[+] Initializing GlobalEventListener");
     Listeners::getInstance().registerListener(new GlobalEventListener());
-
-    println("[+] Initializing features");
-    FeatureManager::getInstance().init();
 
     while (GetAsyncKeyState(VK_END) == 0) {
 
@@ -74,27 +81,22 @@ void startConsole() {
     freopen_s(&p_r_File, "CONIN$", "r", stdin);
 }
 
-void stopConsole() {
-    fclose(p_o_File);
-    fclose(p_r_File);
-    FreeConsole();
-}
-
 [[maybe_unused]] bool DllMain(HINSTANCE instance, DWORD reason, LPVOID reversed) {
 
     static FILE* pFile {nullptr};
     static std::thread _mainThread;
 
     switch (reason) {
-        case DLL_PROCESS_ATTACH:
+        case DLL_PROCESS_ATTACH: {
             startConsole();
 
             _mainThread = std::thread([instance] { mainThread(instance); });
             _mainThread.detach();
 
             break;
+        }
         case DLL_PROCESS_DETACH:
-            stopConsole();
+//            stopConsole();
             break;
         case DLL_THREAD_ATTACH:
             break;

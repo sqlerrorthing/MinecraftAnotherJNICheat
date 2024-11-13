@@ -11,6 +11,7 @@ enum Category {
     PLAYER,
     WORLD,
     MOVEMENT,
+    RENDER,
     UTILS
 };
 

@@ -13,6 +13,19 @@
 #include "net/minecraft/client/Keyboard.hpp"
 #include "net/minecraft/client/network/ClientPlayerEntity.hpp"
 #include "net/minecraft/network/ClientConnection.hpp"
+#include "net/minecraft/entity/Entity.hpp"
+#include "net/minecraft/fluid/FlowableFluid.hpp"
+#include "net/minecraft/client/render/LightmapTextureManager.hpp"
+
+namespace LightmapTextureManagerHooks {
+    extern jmethodID original_get_brightness;
+
+    JNIEXPORT jfloat JNICALL hkGetBrightness(JNIEnv *env, jclass clazz, jobject dimensionType, jint lightLevel);
+}
+
+namespace EntityHooks {
+    JNIEXPORT void JNICALL hkPushAwayFrom(JNIEnv *env, jobject thiz, jobject entity);
+}
 
 namespace ClientConnectionHooks {
     extern jmethodID original_handle_packet;
@@ -23,8 +36,10 @@ namespace ClientConnectionHooks {
 
 namespace ClientPlayerEntityHooks {
     extern jmethodID original_tick_methodID;
+    extern jmethodID original_push_out_of_blocks_methodID;
 
     JNIEXPORT void JNICALL hkTick(JNIEnv *env, jobject obj);
+    JNIEXPORT void JNICALL hkPushOutOfBlocks(JNIEnv *env, jobject obj, jdouble x, jdouble y);
 }
 
 namespace KeyboardHooks {
