@@ -51,6 +51,12 @@ add_library(MinecraftAnotherJNICheat SHARED src/main.cpp
         src/features/impl/player/NoJumpDelay.h
         src/features/impl/player/PearlBlockThrow.cpp
         src/features/impl/player/PearlBlockThrow.h
+        src/features/impl/movement/NoPush.cpp
+        src/features/impl/movement/NoPush.h
+        src/hooks/hooks/MinecraftClientHooks.cpp
+        src/hooks/hooks/KeyboardHooks.cpp
+        src/hooks/hooks/ClientPlayerEntityHooks.cpp
+        src/hooks/hooks/ClientConnectionHooks.cpp
 )
 
 include_directories(${JNI_INCLUDE_DIRS})

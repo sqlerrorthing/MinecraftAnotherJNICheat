@@ -6,11 +6,16 @@
 #define MINECRAFTANOTHERJNICHEAT_HOOKS_HPP
 
 #include "../Includes.h"
+#include "../listeners/Listeners.h"
 #include "jnihook.hpp"
+#include "net/minecraft/client/util/Window.hpp"
+#include "net/minecraft/client/MinecraftClient.hpp"
+#include "net/minecraft/client/Keyboard.hpp"
+#include "net/minecraft/client/network/ClientPlayerEntity.hpp"
+#include "net/minecraft/network/ClientConnection.hpp"
 
 namespace ClientConnectionHooks {
     extern jmethodID original_handle_packet;
-    extern jmethodID original_send;
 
     JNIEXPORT void JNICALL hkHandlePacket(JNIEnv *env, jclass clazz, jobject packet, jobject listener);
     JNIEXPORT void JNICALL hkSend(JNIEnv *env, jobject obj, jobject packet);
