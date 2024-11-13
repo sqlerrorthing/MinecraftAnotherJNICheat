@@ -45,6 +45,10 @@ add_library(MinecraftAnotherJNICheat SHARED src/main.cpp
         src/settings/Settings.h
         src/features/impl/player/AntiHunger.cpp
         src/features/impl/player/AntiHunger.h
+        src/utils/TimeUtil.h
+        src/utils/InventoryUtil.h
+        src/features/impl/player/NoJumpDelay.cpp
+        src/features/impl/player/NoJumpDelay.h
 )
 
 include_directories(${JNI_INCLUDE_DIRS})

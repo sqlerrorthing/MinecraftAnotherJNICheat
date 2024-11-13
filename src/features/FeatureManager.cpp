@@ -6,12 +6,14 @@
 #include "impl/movement/AutoSprint.h"
 #include "impl/player/XCarry.h"
 #include "impl/player/AntiHunger.h"
+#include "impl/player/NoJumpDelay.h"
 
 
 void FeatureManager::init() {
     // Initialize all features here
     initFeature(new AutoSprint());
     initFeature(new XCarry());
+    initFeature(new NoJumpDelay());
     initFeature(new AntiHunger());
 }
 
