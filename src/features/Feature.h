@@ -19,6 +19,11 @@
 #include <sdk.hpp>
 #include <net/minecraft/client/MinecraftClient.hpp>
 #include <net/minecraft/client/network/ClientPlayerEntity.hpp>
+#include "net/minecraft/network/packet/c2s/play/PlayerInteractBlockC2SPacket.hpp"
+#include "net/minecraft/item/Items.hpp"
+#include "net/minecraft/item/ItemStack.hpp"
+#include "net/minecraft/util/Hand.hpp"
+#include "net/minecraft/entity/LivingEntity.hpp"
 
 #define _MC MinecraftClient::get_field_instance()
 #define _PLAYER MinecraftClient::get_field_player(_MC)

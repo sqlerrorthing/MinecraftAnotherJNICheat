@@ -49,6 +49,8 @@ add_library(MinecraftAnotherJNICheat SHARED src/main.cpp
         src/utils/InventoryUtil.h
         src/features/impl/player/NoJumpDelay.cpp
         src/features/impl/player/NoJumpDelay.h
+        src/features/impl/player/PearlBlockThrow.cpp
+        src/features/impl/player/PearlBlockThrow.h
 )
 
 include_directories(${JNI_INCLUDE_DIRS})

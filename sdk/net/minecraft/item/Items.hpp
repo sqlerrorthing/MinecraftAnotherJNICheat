@@ -21353,12 +21353,6 @@ namespace Items {
        const auto clazz = self();
        return MinecraftSDK::env->GetStaticMethodID(clazz, MinecraftSDK::getRemapped("a", "registerBlock", "method_7989", "register", "m_42805_"), "(Ldfy;)Lcul;");
     }
-
-    static jobject register(const jobject& arg0) {
-       const auto clazz = self();
-       const auto methodID = methodID_register();
-       return MinecraftSDK::env->CallStaticObjectMethod(clazz, methodID, arg0);
-    };
     
     static jmethodID methodID__register() {
        const auto clazz = self();

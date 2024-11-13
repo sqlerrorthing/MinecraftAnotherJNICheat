@@ -48,6 +48,24 @@ public:
         return ordinal;
     }
 
+    static bool isObjectsEqual(const jobject &obj1, const jobject &obj2, JNIEnv* env = MinecraftSDK::env) {
+        if (obj1 == nullptr || obj2 == nullptr) {
+            return false;
+        }
+
+        jclass objectClass = env->FindClass("java/lang/Object");
+        if (objectClass == nullptr) {
+            return false;
+        }
+
+        jmethodID equalsMethod = env->GetMethodID(objectClass, "equals", "(Ljava/lang/Object;)Z");
+        if (equalsMethod == nullptr) {
+            return false;
+        }
+
+        jboolean areEqual = env->CallBooleanMethod(obj1, equalsMethod, obj2);
+        return areEqual == JNI_TRUE;
+    }
 
     static Mappings selectedMapping;
 

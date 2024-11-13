@@ -7,6 +7,7 @@
 #include "impl/player/XCarry.h"
 #include "impl/player/AntiHunger.h"
 #include "impl/player/NoJumpDelay.h"
+#include "impl/player/PearlBlockThrow.h"
 
 
 void FeatureManager::init() {
@@ -15,6 +16,7 @@ void FeatureManager::init() {
     initFeature(new XCarry());
     initFeature(new NoJumpDelay());
     initFeature(new AntiHunger());
+    initFeature(new PearlBlockThrow());
 }
 
 Feature *FeatureManager::findFeatureByName(const std::string &name) {
