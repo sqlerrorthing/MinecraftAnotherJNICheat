@@ -1369,7 +1369,6 @@ namespace ClientPlayerEntity {
     }
 
     static void tickNausea(const jobject& obj, const jboolean& arg0) {
-                
        const auto methodID = methodID_tickNausea();
        MinecraftSDK::env->CallVoidMethod(obj, methodID, arg0);
     };

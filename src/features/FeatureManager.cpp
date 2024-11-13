@@ -10,6 +10,7 @@
 #include "impl/player/PearlBlockThrow.h"
 #include "impl/movement/NoPush.h"
 #include "impl/render/FullBright.h"
+#include "impl/player/PortalInventory.h"
 
 
 void FeatureManager::init() {
@@ -19,6 +20,7 @@ void FeatureManager::init() {
     initFeature(new NoJumpDelay());
     initFeature(new AntiHunger());
     initFeature(new NoPush());
+    initFeature(new PortalInventory());
     initFeature(new FullBright());
     initFeature(new PearlBlockThrow());
 }

@@ -37,9 +37,11 @@ namespace ClientConnectionHooks {
 namespace ClientPlayerEntityHooks {
     extern jmethodID original_tick_methodID;
     extern jmethodID original_push_out_of_blocks_methodID;
+    extern jmethodID original_tick_nausea;
 
     JNIEXPORT void JNICALL hkTick(JNIEnv *env, jobject obj);
     JNIEXPORT void JNICALL hkPushOutOfBlocks(JNIEnv *env, jobject obj, jdouble x, jdouble y);
+    JNIEXPORT void JNICALL hkTickNausea(JNIEnv *env, jobject obj, jboolean fromPortalEffect);
 }
 
 namespace KeyboardHooks {

@@ -60,6 +60,7 @@ add_library(MinecraftAnotherJNICheat SHARED src/main.cpp
         src/hooks/hooks/EntityHooks.cpp
         src/features/impl/render/FullBright.h
         src/hooks/hooks/LightmapTextureManagerHooks.cpp
+        src/features/impl/player/PortalInventory.h
 )
 
 include_directories(${JNI_INCLUDE_DIRS})

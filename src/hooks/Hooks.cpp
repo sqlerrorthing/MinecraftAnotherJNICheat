@@ -31,6 +31,7 @@ int Hooks::init() {
         using namespace ClientPlayerEntityHooks;
         JNIHook_Attach(ClientPlayerEntity::methodID_tick(), reinterpret_cast<void *>(hkTick), &original_tick_methodID);
         JNIHook_Attach(ClientPlayerEntity::methodID_pushOutOfBlocks(), reinterpret_cast<void *>(hkPushOutOfBlocks), &original_push_out_of_blocks_methodID);
+        JNIHook_Attach(ClientPlayerEntity::methodID_tickNausea(), reinterpret_cast<void *>(hkTickNausea), &original_tick_nausea);
     }
 
     println("[++] ClientConnection hooks..."); {

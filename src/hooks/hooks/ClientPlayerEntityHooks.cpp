@@ -5,6 +5,7 @@
 #include "../Hooks.hpp"
 #include "../../features/FeatureManager.h"
 #include "../../features/impl/movement/NoPush.h"
+#include "../../features/impl/player/PortalInventory.h"
 
 jmethodID ClientPlayerEntityHooks::original_push_out_of_blocks_methodID;
 void ClientPlayerEntityHooks::hkPushOutOfBlocks(JNIEnv *env, jobject obj, jdouble x, jdouble y) {
@@ -26,4 +27,12 @@ void ClientPlayerEntityHooks::hkTick(JNIEnv *env, jobject obj) {
         return;
 
     env->CallNonvirtualVoidMethod(obj, ClientPlayerEntity::self(), original_tick_methodID);
+}
+
+jmethodID ClientPlayerEntityHooks::original_tick_nausea;
+void ClientPlayerEntityHooks::hkTickNausea(JNIEnv *env, jobject obj, jboolean fromPortalEffect) {
+    if(fromPortalEffect && FeatureManager::getInstance().findFeatureByClass<PortalInventory>()->isEnabled())
+        return;
+
+    env->CallNonvirtualVoidMethod(obj, ClientPlayerEntity::self(), original_tick_nausea, fromPortalEffect);
 }
