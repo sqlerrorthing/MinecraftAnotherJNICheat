@@ -10,9 +10,7 @@
 
 class PearlBlockThrow : public Feature {
 public:
-    PearlBlockThrow() : Feature("PearlBlockThrow", "Allows you to throw pearl into blocks.", Category::PLAYER) {
-        keyBinding.keyCode = GLFW_KEY_I;
-    }
+    PearlBlockThrow() : Feature("PearlBlockThrow", "Allows you to throw pearl into blocks.", Category::PLAYER) {}
 
 protected:
     void onPacketSend(EventPacketSend &event) override;
