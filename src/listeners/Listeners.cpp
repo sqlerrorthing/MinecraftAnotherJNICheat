@@ -39,3 +39,21 @@ void Listeners::onLocalPlayerUpdate(EventLocalPlayerUpdate &event) {
     }
 }
 
+void Listeners::onPacketReceived(EventPacketReceived &event) {
+    for (const auto& listener : listeners) {
+        listener->onPacketReceived(event);
+        if (event.cancelled) {
+            break;
+        }
+    }
+}
+
+void Listeners::onPacketSend(EventPacketSend &event) {
+    for (const auto& listener : listeners) {
+        listener->onPacketSend(event);
+        if (event.cancelled) {
+            break;
+        }
+    }
+}
+

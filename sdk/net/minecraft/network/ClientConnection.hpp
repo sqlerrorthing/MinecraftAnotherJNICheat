@@ -604,7 +604,6 @@ namespace ClientConnection {
     }
 
     static void _send(const jobject& obj, const jobject& arg0, const jobject& arg1) {
-                
        const auto methodID = methodID__send();
        MinecraftSDK::env->CallVoidMethod(obj, methodID, arg0, arg1);
     };

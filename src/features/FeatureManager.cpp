@@ -4,10 +4,13 @@
 
 #include "FeatureManager.h"
 #include "impl/movement/AutoSprint.h"
+#include "impl/player/XCarry.h"
+
 
 void FeatureManager::init() {
     // Initialize all features here
-    features.push_back(new AutoSprint());
+    initFeature(new AutoSprint());
+    initFeature(new XCarry());
 }
 
 Feature *FeatureManager::findFeatureByName(const std::string &name) {

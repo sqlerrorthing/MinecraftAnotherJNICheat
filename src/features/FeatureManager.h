@@ -38,6 +38,11 @@ private:
     FeatureManager() = default;
     ~FeatureManager() = default;
 
+    void initFeature(Feature* feature) {
+        fmt::println("[++] Initializing feature {}", feature->getName());
+        features.push_back(feature);
+    }
+
     std::vector<Feature*> features{};
 };
 

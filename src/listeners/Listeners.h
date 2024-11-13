@@ -23,6 +23,9 @@ public:
     void onKey(EventOnKey &event) override;
     void onLocalPlayerUpdate(EventLocalPlayerUpdate &event) override;
 
+    void onPacketReceived(EventPacketReceived &event) override;
+    void onPacketSend(EventPacketSend &event) override;
+
 private:
     Listeners() = default;
     ~Listeners() = default;

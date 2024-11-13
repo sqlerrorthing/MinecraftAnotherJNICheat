@@ -17,9 +17,9 @@
 #include <net/minecraft/client/MinecraftClient.hpp>
 #include <net/minecraft/client/network/ClientPlayerEntity.hpp>
 
-#define MC MinecraftClient::get_field_instance()
-#define PLAYER MinecraftClient::get_field_player(MC)
-#define WORLD MinecraftClient::get_field_world(MC)
+#define _MC MinecraftClient::get_field_instance()
+#define _PLAYER MinecraftClient::get_field_player(_MC)
+#define _WORLD MinecraftClient::get_field_world(_MC)
 
 class Feature : public Listener {
 public:

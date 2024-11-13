@@ -8,6 +8,14 @@
 #include "../Includes.h"
 #include "jnihook.hpp"
 
+namespace ClientConnectionHooks {
+    extern jmethodID original_handle_packet;
+    extern jmethodID original_send;
+
+    JNIEXPORT void JNICALL hkHandlePacket(JNIEnv *env, jclass clazz, jobject packet, jobject listener);
+    JNIEXPORT void JNICALL hkSend(JNIEnv *env, jobject obj, jobject packet);
+}
+
 namespace ClientPlayerEntityHooks {
     extern jmethodID original_tick_methodID;
 

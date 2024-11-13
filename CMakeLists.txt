@@ -39,6 +39,8 @@ add_library(MinecraftAnotherJNICheat SHARED src/main.cpp
         src/features/FeatureManager.h
         src/features/impl/movement/AutoSprint.cpp
         src/features/impl/movement/AutoSprint.h
+        src/features/impl/player/XCarry.cpp
+        src/features/impl/player/XCarry.h
 )
 
 include_directories(${JNI_INCLUDE_DIRS})
