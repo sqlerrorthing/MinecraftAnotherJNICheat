@@ -5,12 +5,14 @@
 #include "FeatureManager.h"
 #include "impl/movement/AutoSprint.h"
 #include "impl/player/XCarry.h"
+#include "impl/player/AntiHunger.h"
 
 
 void FeatureManager::init() {
     // Initialize all features here
     initFeature(new AutoSprint());
     initFeature(new XCarry());
+    initFeature(new AntiHunger());
 }
 
 Feature *FeatureManager::findFeatureByName(const std::string &name) {

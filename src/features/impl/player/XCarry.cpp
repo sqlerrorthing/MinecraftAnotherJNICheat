@@ -6,6 +6,6 @@
 #include "net/minecraft/network/packet/c2s/play/CloseHandledScreenC2SPacket.hpp"
 
 void XCarry::onPacketSend(EventPacketSend &event) {
-    if(MinecraftSDK::env->IsInstanceOf(event.packet, CloseHandledScreenC2SPacket::self()))
+    if(IS_INSTANCE(event.packet, CloseHandledScreenC2SPacket::self()))
         event.cancel();
 }

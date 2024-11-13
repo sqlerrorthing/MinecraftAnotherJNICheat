@@ -6,8 +6,11 @@
 #define MINECRAFTANOTHERJNICHEAT_FEATURE_H
 
 #include <utility>
+#include <vector>
+
 #include "KeyBinding.h"
 #include "Category.h"
+#include "../settings/Settings.h"
 
 #include "../Includes.h"
 #include "../listeners/Listener.h"
@@ -77,6 +80,12 @@ public:
     }
 
 protected:
+
+    void addSettings(std::initializer_list<Setting*> newSettings)
+    {
+        settings.insert(settings.end(), newSettings.begin(), newSettings.end());
+    }
+
     virtual void onEnable() {
         Listeners::getInstance().registerListener(this);
     };
@@ -92,6 +101,8 @@ private:
     const std::string description;
     const Category category;
     bool toggled = false;
+
+    std::vector<Setting*> settings;
 };
 
 #endif //MINECRAFTANOTHERJNICHEAT_FEATURE_H

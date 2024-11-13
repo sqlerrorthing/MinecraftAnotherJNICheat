@@ -7,16 +7,28 @@
 
 #include "Setting.h"
 
-class Checkbox final : public Setting<bool> {
-    explicit Checkbox(const std::string& name, bool defaultValue = false, const std::function<bool()> &visible = []() -> bool { return true; }) :
-            Setting<bool>(name, &defaultValue, visible) {}
+class Checkbox final : public Setting {
+public:
+    Checkbox(const std::string& name, bool defaultValue = false, const std::function<bool()> &visible = []() -> bool { return true; }) :
+            Setting(name, visible), value(defaultValue) {}
+
+    [[nodiscard]] bool is() const {
+        return value;
+    }
+
+    void set(bool newValue) {
+        Checkbox::value = newValue;
+    }
+
+private:
+    bool value;
 };
 
-class Slider final : public Setting<double> {
+class Slider final : public Setting {
 public:
 
     Slider(const std::string& name, double defaultValue, double minValue, double maxValue, double increment, const std::function<bool()> &visible = []() -> bool { return true; }) :
-            Setting<double>(name, &defaultValue, visible), minValue(minValue), maxValue(maxValue), increment(increment) {}
+            Setting(name, visible), value(defaultValue), minValue(minValue), maxValue(maxValue), increment(increment) {}
 
     [[nodiscard]] double getMinValue() const {
         return minValue;
@@ -30,19 +42,43 @@ public:
         return increment;
     }
 
+    [[nodiscard]] double getValue() const {
+        return value;
+    }
+
+    void setValue(double newValue) {
+        Slider::value = newValue;
+    }
+
 private:
+    double value;
     double minValue;
     double maxValue;
     double increment;
 };
 
-class MultiCheckboxList final : public Setting<std::vector<bool>> {
+class MultiCheckboxList final : public Setting {
 public:
-    explicit MultiCheckboxList(const std::string& name, const std::map<std::string, bool>& modes, const std::function<bool()> &visible = []() -> bool { return true; }) :
-            Setting<std::vector<bool>>(name, nullptr, visible), modes(modes) {}
 
-    [[nodiscard]] bool is(const std::string& name) const {
-        return modes.at(name);
+    MultiCheckboxList(const std::string &name, const std::map<std::string, bool> &modes, const std::function<bool()> &visible = []() -> bool { return true; })
+            : Setting(name, visible), modes(modes) {}
+
+    [[nodiscard]] bool is(const std::string& name) {
+        auto it = modes.find(name);
+        if (it != modes.end()) {
+            return it->second;
+        }
+        return false;
+    }
+
+    [[nodiscard]] bool is(size_t index) const {
+        if (index >= modes.size()) {
+            return false;
+        }
+
+        auto it = modes.begin();
+        std::advance(it, index);
+        return it->second;
     }
 
     void set(const std::string& name, bool value) {
@@ -50,16 +86,6 @@ public:
     }
 
 private:
-    [[nodiscard]] std::vector<bool> *getValue() const override {
-        return Setting::getValue();
-    }
-
-    std::vector<bool> operator*() override {
-        return Setting::operator*();
-    }
-
-    void setValue(std::vector<bool> *newValue) override {}
-
     std::map<std::string, bool> modes;
 };
 

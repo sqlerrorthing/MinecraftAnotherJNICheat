@@ -11,39 +11,21 @@
 #include <functional>
 #include <utility>
 
-template<typename T>
 class Setting {
 public:
-
-    Setting(std::string name, T *value, const std::function<bool()> &visible) : name(std::move(name)), visible(visible),
-                                                                                       value(value) {}
-
-    Setting(std::string name, T *value) : name(std::move(name)), value(value) {}
+    explicit Setting(std::string name, const std::function<bool()> &visible = []() -> bool { return true; }) : name(std::move(name)), visible(visible) {}
 
     [[nodiscard]] const std::function<bool()> &getVisible() const {
         return visible;
     }
 
     void setVisible(const std::function<bool()> &function) {
-        Setting::visible = function;
-    }
-
-    virtual T *getValue() const {
-        return value;
-    }
-
-    virtual T operator*() {
-        return *value;
-    }
-
-    virtual void setValue(T *newValue) {
-        value = newValue;
+        visible = function;
     }
 
 private:
     std::string name;
-    std::function<bool()> visible = []() -> bool { return true; };
-    T* value;
+    std::function<bool()> visible;
 };
 
 #endif //MINECRAFTANOTHERJNICHEAT_SETTING_H

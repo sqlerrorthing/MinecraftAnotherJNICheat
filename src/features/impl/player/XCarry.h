@@ -10,9 +10,7 @@
 
 class XCarry : public Feature {
 public:
-    XCarry() : Feature("XCarry", "Adds four slots in inventory (in craft)", Category::PLAYER) {
-        this->keyBinding.keyCode = GLFW_KEY_I;
-    }
+    XCarry() : Feature("XCarry", "Adds four slots in inventory (in craft)", Category::PLAYER) {}
 
 protected:
     void onPacketSend(EventPacketSend &event) override;

@@ -140,7 +140,6 @@ namespace ClientCommandC2SPacket {
     }
 
     static jint getMountJumpHeight(const jobject& obj) {
-                
        const auto methodID = methodID_getMountJumpHeight();
        return MinecraftSDK::env->CallIntMethod(obj, methodID);
     };

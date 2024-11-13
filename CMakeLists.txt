@@ -43,6 +43,8 @@ add_library(MinecraftAnotherJNICheat SHARED src/main.cpp
         src/features/impl/player/XCarry.h
         src/settings/Setting.h
         src/settings/Settings.h
+        src/features/impl/player/AntiHunger.cpp
+        src/features/impl/player/AntiHunger.h
 )
 
 include_directories(${JNI_INCLUDE_DIRS})

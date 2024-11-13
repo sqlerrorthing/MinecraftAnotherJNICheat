@@ -12,6 +12,8 @@
 
 #define JSTRING(str) (MinecraftSDK::env)->NewStringUTF(str.c_str())
 
+#define IS_INSTANCE(first, second) MinecraftSDK::env->IsInstanceOf(first, second)
+
 #define JSTRING_TO_STD_STRING(jObj) \
     ([&]() -> std::string { \
         jstring jstr = static_cast<jstring>(jObj); \
@@ -37,7 +39,16 @@ public:
         YARN,
         SEARGE
     };
- 
+
+    static jint getEnumOrdinal(jobject enumObject, JNIEnv* _env = MinecraftSDK::env) {
+        jclass enumClass = _env->GetObjectClass(enumObject);
+        auto ordinalFieldID = _env->GetFieldID(enumClass, "ordinal", "I");
+
+        jint ordinal = _env->GetIntField(enumObject, ordinalFieldID);
+        return ordinal;
+    }
+
+
     static Mappings selectedMapping;
 
     static JavaVM* vm;
