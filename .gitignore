@@ -1,0 +1,26 @@
+### Example user template template
+### Example user template
+
+# Build
+/build/
+/cmake-build-debug
+/cmake-build-release
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+### AL template
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Local History for Visual Studio Code
+.history/
+*.app
+.snapshots/*
+
