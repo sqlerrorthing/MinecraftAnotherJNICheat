@@ -13,6 +13,7 @@
 #include <GLFW/glfw3.h>
 #include <fmt/base.h>
 
+#define CLIENT_NAME "github.com/sqlerrorthing"
 #define DEBUG
 
 #include "sdk.hpp"

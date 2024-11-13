@@ -10,10 +10,7 @@
 
 class AutoSprint : public Feature {
 public:
-    AutoSprint() : Feature("AutoSprint", "Makes you sprint always", Category::MOVEMENT) {
-        this->keyBinding.keyCode = 79; // O
-        this->keyBinding.modifiers = {GLFW_MOD_ALT};
-    }
+    AutoSprint() : Feature("AutoSprint", "Makes you sprint always", Category::MOVEMENT) {}
 
 protected:
     void onLocalPlayerUpdate(EventLocalPlayerUpdate &event) override;

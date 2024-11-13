@@ -28,6 +28,18 @@ namespace InventoryUtil {
         return -1;
     }
 
+    int findNearestCurrentItem() {
+        const auto inventory = PlayerEntity::get_field_inventory(
+                MinecraftClient::get_field_player(MinecraftClient::get_field_instance())
+        );
+
+        int slot = PlayerInventory::get_field_selectedSlot(inventory);
+
+        if(slot == 8) return 7;
+        if(slot == 0) return 1;
+        return slot - 1;
+    }
+
 }
 
 #endif //MINECRAFTANOTHERJNICHEAT_INVENTORYUTIL_H

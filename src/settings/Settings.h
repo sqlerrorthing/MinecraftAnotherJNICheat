@@ -27,7 +27,7 @@ private:
 class Slider final : public Setting {
 public:
 
-    Slider(const std::string& name, double defaultValue, double minValue, double maxValue, double increment, const std::function<bool()> &visible = []() -> bool { return true; }) :
+    Slider(const std::string& name, double defaultValue, double minValue, double maxValue, double increment = 1, const std::function<bool()> &visible = []() -> bool { return true; }) :
             Setting(name, visible), value(defaultValue), minValue(minValue), maxValue(maxValue), increment(increment) {}
 
     [[nodiscard]] double getMinValue() const {

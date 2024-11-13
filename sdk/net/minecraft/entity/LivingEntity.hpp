@@ -3302,7 +3302,6 @@ namespace LivingEntity {
     }
 
     static jobject getMainHandStack(const jobject& obj) {
-                
        const auto methodID = methodID_getMainHandStack();
        return MinecraftSDK::env->CallObjectMethod(obj, methodID);
     };

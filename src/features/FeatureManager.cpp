@@ -12,6 +12,7 @@
 #include "impl/render/FullBright.h"
 #include "impl/player/PortalInventory.h"
 #include "impl/player/NoServerRotate.h"
+#include "impl/movement/EntityControl.h"
 
 
 void FeatureManager::init() {
@@ -25,6 +26,7 @@ void FeatureManager::init() {
     initFeature(new NoServerRotate());
     initFeature(new FullBright());
     initFeature(new PearlBlockThrow());
+    initFeature(new EntityControl());
 }
 
 Feature *FeatureManager::findFeatureByName(const std::string &name) {

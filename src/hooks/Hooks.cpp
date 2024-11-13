@@ -49,6 +49,12 @@ int Hooks::init() {
         JNIHook_Attach(Entity::methodID_pushAwayFrom(), reinterpret_cast<void *>(hkPushAwayFrom), &tmp);
     }
 
+    println("[++] AbstractHorseEntityHooks hooks..."); {
+        using namespace AbstractHorseEntityHooks;
+
+        JNIHook_Attach(AbstractHorseEntity::methodID_isSaddled(), reinterpret_cast<void *>(hkIsSaddled), &original_get_is_saddled);
+    }
+
     println("[++] LightmapTextureManager hooks..."); {
         using namespace LightmapTextureManagerHooks;
 

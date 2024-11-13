@@ -7,6 +7,7 @@
 
 #include "../Includes.h"
 #include "../listeners/Listeners.h"
+#include "../features/FeatureManager.h"
 #include "jnihook.hpp"
 #include "net/minecraft/client/util/Window.hpp"
 #include "net/minecraft/client/MinecraftClient.hpp"
@@ -16,6 +17,13 @@
 #include "net/minecraft/entity/Entity.hpp"
 #include "net/minecraft/fluid/FlowableFluid.hpp"
 #include "net/minecraft/client/render/LightmapTextureManager.hpp"
+#include "net/minecraft/entity/passive/AbstractHorseEntity.hpp"
+
+namespace AbstractHorseEntityHooks {
+    extern jmethodID original_get_is_saddled;
+
+    JNIEXPORT jboolean JNICALL hkIsSaddled(JNIEnv *env, jobject thiz);
+}
 
 namespace LightmapTextureManagerHooks {
     extern jmethodID original_get_brightness;

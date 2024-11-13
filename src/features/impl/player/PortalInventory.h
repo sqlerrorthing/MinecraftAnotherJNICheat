@@ -9,11 +9,7 @@
 
 class PortalInventory : public Feature {
 public:
-    PortalInventory() : Feature("PortalInventory", "Opens inventories in portals", Category::PLAYER) {
-#ifdef DEBUG
-        this->keyBinding.keyCode = GLFW_KEY_P;
-#endif
-    }
+    PortalInventory() : Feature("PortalInventory", "Opens inventories in portals", Category::PLAYER) {}
 };
 
 #endif //MINECRAFTANOTHERJNICHEAT_PORTALINVENTORY_H

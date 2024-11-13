@@ -63,6 +63,9 @@ add_library(MinecraftAnotherJNICheat SHARED src/main.cpp
         src/features/impl/player/PortalInventory.h
         src/features/impl/player/NoServerRotate.cpp
         src/features/impl/player/NoServerRotate.h
+        src/utils/ChatUtil.h
+        src/features/impl/movement/EntityControl.h
+        src/hooks/hooks/AbstractHorseEntityHooks.cpp
 )
 
 include_directories(${JNI_INCLUDE_DIRS})
