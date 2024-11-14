@@ -10,29 +10,15 @@
 
 #include "KeyBinding.h"
 #include "Category.h"
-#include "../settings/Settings.h"
+#include "settings/Settings.h"
 
-#include "../Includes.h"
-#include "../listeners/Listener.h"
-#include "../listeners/Listeners.h"
+#include "Includes.h"
+#include "listeners/Listener.h"
+#include "listeners/Listeners.h"
 
-#include <sdk.hpp>
-#include <net/minecraft/client/MinecraftClient.hpp>
-#include <net/minecraft/client/input/Input.hpp>
-#include <net/minecraft/client/network/ClientPlayerEntity.hpp>
-#include "net/minecraft/network/packet/c2s/play/PlayerInteractBlockC2SPacket.hpp"
-#include "net/minecraft/entity/player/PlayerInventory.hpp"
-#include "net/minecraft/item/Items.hpp"
-#include "net/minecraft/item/ItemStack.hpp"
-#include "net/minecraft/entity/Entity.hpp"
-#include "net/minecraft/util/Hand.hpp"
-#include "net/minecraft/entity/LivingEntity.hpp"
-#include "net/minecraft/entity/player/HungerManager.hpp"
-#include "net/minecraft/entity/player/PlayerEntity.hpp"
+#include "utils/Utils.h"
+#include "MinecraftIncludes.h"
 
-#define _MC MinecraftClient::get_field_instance()
-#define _PLAYER MinecraftClient::get_field_player(_MC)
-#define _WORLD MinecraftClient::get_field_world(_MC)
 
 class Feature : public Listener {
 public:

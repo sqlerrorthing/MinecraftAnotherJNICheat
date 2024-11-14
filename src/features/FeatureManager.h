@@ -25,6 +25,11 @@ public:
                 return castedFeature;
             }
         }
+
+#ifdef DEBUG
+        fmt::println("Feature not found, returning null pointer");
+#endif
+
         return nullptr;
     }
 

@@ -14,6 +14,8 @@
 
 #define IS_INSTANCE(first, second) MinecraftSDK::env->IsInstanceOf(first, second)
 
+#define EQUALS(x, y) (MinecraftSDK::isObjectsEqual(x, y))
+
 #define JSTRING_TO_STD_STRING(jObj) \
     ([&]() -> std::string { \
         jstring jstr = static_cast<jstring>(jObj); \
@@ -53,9 +55,11 @@ public:
             return false;
         }
 
-        jclass objectClass = env->FindClass("java/lang/Object");
-        jmethodID equalsMethod = env->GetMethodID(objectClass, "equals", "(Ljava/lang/Object;)Z");
-        return env->CallBooleanMethod(obj1, equalsMethod, obj2);
+        if(env->IsSameObject(obj1, obj2)) {
+            return true;
+        }
+
+        return false;
     }
 
     static Mappings selectedMapping;

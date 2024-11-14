@@ -8,16 +8,29 @@
 #include "../Includes.h"
 #include "../listeners/Listeners.h"
 #include "../features/FeatureManager.h"
+#include "../MinecraftIncludes.h"
+#include "utils/FrameRateCounterUtil.h"
 #include "jnihook.hpp"
-#include "net/minecraft/client/util/Window.hpp"
-#include "net/minecraft/client/MinecraftClient.hpp"
-#include "net/minecraft/client/Keyboard.hpp"
-#include "net/minecraft/client/network/ClientPlayerEntity.hpp"
-#include "net/minecraft/network/ClientConnection.hpp"
-#include "net/minecraft/entity/Entity.hpp"
-#include "net/minecraft/fluid/FlowableFluid.hpp"
-#include "net/minecraft/client/render/LightmapTextureManager.hpp"
-#include "net/minecraft/entity/passive/AbstractHorseEntity.hpp"
+
+namespace CameraHooks {
+    extern jmethodID original_clipToSpace;
+
+    JNIEXPORT jfloat JNICALL hkClipToSpace(JNIEnv *env, jobject thiz, jfloat f);
+}
+
+namespace WorldRendererHooks {
+    extern jmethodID original_render;
+
+    JNIEXPORT void JNICALL hkRender(JNIEnv *env, jobject thiz, jobject tickCounter, jboolean renderBlockOutline,
+                                    jobject camera, jobject gameRenderer, jobject lightmapTextureManager,
+                                    jobject matrix4f, jobject matrix4f2);
+}
+
+namespace PlayerEntityHooks {
+    extern jmethodID original_get_entity_interaction_range;
+
+    JNIEXPORT jdouble JNICALL hkGetEntityInteractionRange(JNIEnv *env, jobject thiz);
+}
 
 namespace AbstractHorseEntityHooks {
     extern jmethodID original_get_is_saddled;
@@ -31,8 +44,16 @@ namespace LightmapTextureManagerHooks {
     JNIEXPORT jfloat JNICALL hkGetBrightness(JNIEnv *env, jclass clazz, jobject dimensionType, jint lightLevel);
 }
 
-namespace EntityHooks {
+namespace LivingEntityHooks {
+    extern jmethodID original_push_away_from;
     JNIEXPORT void JNICALL hkPushAwayFrom(JNIEnv *env, jobject thiz, jobject entity);
+};
+
+namespace EntityHooks {
+    extern jmethodID original_get_bounding_box;
+
+
+    JNIEXPORT jobject JNICALL hkGetBoundingBox(JNIEnv *env, jobject thiz);
 }
 
 namespace ClientConnectionHooks {

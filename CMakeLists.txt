@@ -66,11 +66,30 @@ add_library(MinecraftAnotherJNICheat SHARED src/main.cpp
         src/utils/ChatUtil.h
         src/features/impl/movement/EntityControl.h
         src/hooks/hooks/AbstractHorseEntityHooks.cpp
+        src/features/impl/combat/Reach.h
+        src/utils/Utils.h
+        src/utils/RandomUtil.h
+        src/MinecraftIncludes.h
+        src/hooks/hooks/PlayerEntityHooks.cpp
+        src/utils/ChatUtil.cpp
+        src/utils/InventoryUtil.cpp
+        src/hooks/hooks/LivingEntityHooks.cpp
+        src/utils/JavaUtil.h
+        src/utils/JavaUtil.cpp
+        src/hooks/hooks/CameraHooks.cpp
+        src/features/impl/render/NoCameraClip.h
+        src/utils/AnimationUtil.h
+        src/utils/AnimationUtil.cpp
+        src/utils/MathUtil.h
+        src/utils/FrameRateCounterUtil.cpp
+        src/utils/FrameRateCounterUtil.h
+        src/hooks/hooks/WorldRendererHooks.cpp
 )
 
 include_directories(${JNI_INCLUDE_DIRS})
 include_directories(${PROJECT_SOURCE_DIR}/sdk)
 include_directories(${PROJECT_SOURCE_DIR}/includes/jnihook)
+include_directories("${CMAKE_SOURCE_DIR}/src")
 
 target_link_libraries(MinecraftAnotherJNICheat
         ${JNI_LIBRARIES}

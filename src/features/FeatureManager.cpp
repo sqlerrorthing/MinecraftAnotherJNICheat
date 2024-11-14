@@ -13,6 +13,8 @@
 #include "impl/player/PortalInventory.h"
 #include "impl/player/NoServerRotate.h"
 #include "impl/movement/EntityControl.h"
+#include "features/impl/combat/Reach.h"
+#include "features/impl/render/NoCameraClip.h"
 
 
 void FeatureManager::init() {
@@ -27,6 +29,8 @@ void FeatureManager::init() {
     initFeature(new FullBright());
     initFeature(new PearlBlockThrow());
     initFeature(new EntityControl());
+    initFeature(new Reach());
+    initFeature(new NoCameraClip());
 }
 
 Feature *FeatureManager::findFeatureByName(const std::string &name) {
@@ -35,6 +39,10 @@ Feature *FeatureManager::findFeatureByName(const std::string &name) {
             return feature;
         }
     }
+
+#ifdef DEBUG
+    fmt::println("Feature '{}' not found, returning null pointer", name);
+#endif
 
     return nullptr;
 }

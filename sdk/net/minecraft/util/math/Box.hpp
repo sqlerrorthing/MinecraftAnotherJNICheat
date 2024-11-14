@@ -313,12 +313,6 @@ namespace Box {
        return MinecraftSDK::env->GetMethodID(clazz, MinecraftSDK::getRemapped("b", "minmax", "method_991", "union", "m_82367_"), "(Lewx;)Lewx;");
     }
 
-    static jobject union(const jobject& obj, const jobject& arg0) {
-                
-       const auto methodID = methodID_union();
-       return MinecraftSDK::env->CallObjectMethod(obj, methodID, arg0);
-    };
-    
     static jmethodID methodID_offset() {
        const auto clazz = self();
        return MinecraftSDK::env->GetMethodID(clazz, MinecraftSDK::getRemapped("d", "move", "method_989", "offset", "m_82386_"), "(DDD)Lewx;");

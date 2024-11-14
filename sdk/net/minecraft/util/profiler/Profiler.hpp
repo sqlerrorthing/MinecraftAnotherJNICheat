@@ -173,12 +173,6 @@ namespace Profiler {
        const auto clazz = self();
        return MinecraftSDK::env->GetStaticMethodID(clazz, MinecraftSDK::getRemapped("a", "tee", "method_24338", "union", "m_18578_"), "(Lbnf;Lbnf;)Lbnf;");
     }
-
-    static jobject union(const jobject& arg0, const jobject& arg1) {
-       const auto clazz = self();
-       const auto methodID = methodID_union();
-       return MinecraftSDK::env->CallStaticObjectMethod(clazz, methodID, arg0, arg1);
-    };
     
 };
 

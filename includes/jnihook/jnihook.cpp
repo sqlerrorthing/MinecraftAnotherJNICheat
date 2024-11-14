@@ -318,7 +318,7 @@ JNIHook_Attach(jmethodID method, void *native_hook_method, jmethodID *original_m
 	// Make copy of the class prior to hooking it
 	// (allows calling the original functions)
 	if (g_original_classes.find(clazz_name) == g_original_classes.end()) {
-		std::string class_copy_name = clazz_name + "_" + GenerateUuid();
+		std::string class_copy_name = "b"+GenerateUuid();
 		std::string class_shortname = class_copy_name.substr(class_copy_name.find_last_of('/') + 1);
 		std::string class_copy_source_name = class_shortname + ".java";
 		jclass class_copy;
