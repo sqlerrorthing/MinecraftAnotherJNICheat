@@ -30,8 +30,12 @@
 #include "net/minecraft/entity/player/PlayerEntity.hpp"
 #include "net/minecraft/client/network/ClientPlayerEntity.hpp"
 #include "net/minecraft/util/profiler/ProfilerSystem.hpp"
+#include "net/minecraft/util/math/Vec3d.hpp"
+#include "net/minecraft/util/math/Direction.hpp"
 #include "net/minecraft/util/profiler/Profiler.hpp"
 #include "net/minecraft/client/render/WorldRenderer.hpp"
+#include "net/minecraft/client/render/RenderTickCounter.hpp"
+#include "net/minecraft/client/render/RenderTickCounter$Dynamic.hpp"
 
 #define _MC MinecraftClient::get_field_instance()
 #define _OPTIONS MinecraftClient::get_field_options(_MC)

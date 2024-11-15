@@ -26,6 +26,12 @@ public:
     void onPacketReceived(EventPacketReceived &event) override;
     void onPacketSend(EventPacketSend &event) override;
 
+    void onMove(EventMove &event) override;
+    void onPlayerRespawn() override;
+
+    void onSync(EventSync &event) override;
+
+
 private:
     Listeners() = default;
     ~Listeners() = default;

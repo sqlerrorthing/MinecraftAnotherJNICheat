@@ -14,16 +14,15 @@
 
 namespace CameraHooks {
     extern jmethodID original_clipToSpace;
+    extern jmethodID original_get_submersion_type;
+    extern jmethodID original_set_rotation;
+    extern jmethodID original_set_pos;
 
     JNIEXPORT jfloat JNICALL hkClipToSpace(JNIEnv *env, jobject thiz, jfloat f);
-}
+    JNIEXPORT jobject JNICALL hkGetSubmersionType(JNIEnv *env, jobject thiz);
 
-namespace WorldRendererHooks {
-    extern jmethodID original_render;
-
-    JNIEXPORT void JNICALL hkRender(JNIEnv *env, jobject thiz, jobject tickCounter, jboolean renderBlockOutline,
-                                    jobject camera, jobject gameRenderer, jobject lightmapTextureManager,
-                                    jobject matrix4f, jobject matrix4f2);
+    JNIEXPORT void JNICALL hkSetRotation(JNIEnv *env, jobject thiz, jfloat yaw, jfloat pitch);
+    JNIEXPORT void JNICALL hkSetPos(JNIEnv *env, jobject thiz, jdouble x, jdouble y, jdouble z);
 }
 
 namespace PlayerEntityHooks {
@@ -46,12 +45,12 @@ namespace LightmapTextureManagerHooks {
 
 namespace LivingEntityHooks {
     extern jmethodID original_push_away_from;
+
     JNIEXPORT void JNICALL hkPushAwayFrom(JNIEnv *env, jobject thiz, jobject entity);
 };
 
 namespace EntityHooks {
     extern jmethodID original_get_bounding_box;
-
 
     JNIEXPORT jobject JNICALL hkGetBoundingBox(JNIEnv *env, jobject thiz);
 }
@@ -67,10 +66,14 @@ namespace ClientPlayerEntityHooks {
     extern jmethodID original_tick_methodID;
     extern jmethodID original_push_out_of_blocks_methodID;
     extern jmethodID original_tick_nausea;
+    extern jmethodID original_move;
+    extern jmethodID original_send_movement_packets;
 
     JNIEXPORT void JNICALL hkTick(JNIEnv *env, jobject obj);
     JNIEXPORT void JNICALL hkPushOutOfBlocks(JNIEnv *env, jobject obj, jdouble x, jdouble y);
     JNIEXPORT void JNICALL hkTickNausea(JNIEnv *env, jobject obj, jboolean fromPortalEffect);
+    JNIEXPORT void JNICALL hkMove(JNIEnv *env, jobject obj, jobject movementType, jobject movement);
+    JNIEXPORT void JNICALL hkSendMovementPackets(JNIEnv *env, jobject thiz);
 }
 
 namespace KeyboardHooks {

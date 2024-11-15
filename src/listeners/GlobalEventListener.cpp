@@ -3,6 +3,13 @@
 //
 
 #include "GlobalEventListener.h"
+#include "net/minecraft/network/packet/s2c/play/PlayerRespawnS2CPacket.hpp"
+
+void GlobalEventListener::onPacketReceived(EventPacketReceived &event) {
+    if(IS_INSTANCE(event.packet, PlayerRespawnS2CPacket::self())) {
+        Listeners::getInstance().onPlayerRespawn();
+    }
+}
 
 void GlobalEventListener::onKey(EventOnKey &event) {
     auto const mc = MinecraftClient::get_field_instance();

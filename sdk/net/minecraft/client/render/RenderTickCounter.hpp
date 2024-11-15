@@ -70,7 +70,6 @@ namespace RenderTickCounter {
     }
 
     static jfloat getTickDelta(const jobject& obj, const jboolean& arg0) {
-                
        const auto methodID = methodID_getTickDelta();
        return MinecraftSDK::env->CallFloatMethod(obj, methodID, arg0);
     };

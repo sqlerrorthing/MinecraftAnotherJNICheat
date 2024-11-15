@@ -20,6 +20,29 @@ struct EventCancellable : public Event {
     }
 };
 
+struct EventMove : public EventCancellable {
+    const enum MovementType {
+        SELF,
+        PLAYER,
+        PISTON,
+        SHULKER_BOX,
+        SHULKER
+    } movementType;
+
+    double x;
+    double y;
+    double z;
+
+    EventMove(MovementType movementType, double x, double y, double z) : movementType(movementType), x(x), y(y), z(z) {}
+};
+
+struct EventSync : public EventCancellable {
+    float yaw;
+    float pitch;
+
+    EventSync(float yaw, float pitch) : yaw(yaw), pitch(pitch) {}
+};
+
 struct EventPacket : public EventCancellable {
     jobject &packet;
     explicit EventPacket(jobject &packet) : packet(packet) {}
@@ -53,6 +76,13 @@ protected:
 
     virtual void onPacketReceived(EventPacketReceived &event) {}
     virtual void onPacketSend(EventPacketSend &event) {}
+
+    virtual void onMove(EventMove &event) {}
+
+    virtual void onPlayerRespawn() {}
+
+    virtual void onSync(EventSync &event) {}
+
 
     friend class Listeners;
 };

@@ -13,7 +13,7 @@ if (WIN32)
     set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 endif()
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -finput-charset=UTF-8 -fexec-charset=UTF-8")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 add_library(MinecraftAnotherJNICheat SHARED src/main.cpp
         src/hooks/Hooks.cpp
@@ -83,7 +83,10 @@ add_library(MinecraftAnotherJNICheat SHARED src/main.cpp
         src/utils/MathUtil.h
         src/utils/FrameRateCounterUtil.cpp
         src/utils/FrameRateCounterUtil.h
-        src/hooks/hooks/WorldRendererHooks.cpp
+        src/features/impl/render/FreeCam.cpp
+        src/features/impl/render/FreeCam.h
+        src/utils/MovementUtil.cpp
+        src/utils/MovementUtil.h
 )
 
 include_directories(${JNI_INCLUDE_DIRS})

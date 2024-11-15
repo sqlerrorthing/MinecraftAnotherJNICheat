@@ -25,7 +25,7 @@ public:
 
     Feature(std::string name, std::string description, const Category category,
             KeyBinding keyBinding) : name(std::move(name)), description(std::move(description)), category(category),
-                                            keyBinding(std::move(keyBinding)) {}
+                                      keyBinding(std::move(keyBinding)) {}
 
     Feature(std::string name, const Category category) : name(std::move(name)), description(), category(category),
                                             keyBinding(KeyBinding()) {}
@@ -77,6 +77,13 @@ public:
 
 protected:
 
+    float getTickDelta() {
+        try {
+            auto timer = MinecraftClient::get_field_renderTickCounter(_MC);
+            return static_cast<float>(RenderTickCounter$Dynamic::getTickDelta(timer, true));
+        } catch (...) {return 0.0f;}
+    }
+
     void addSettings(std::initializer_list<Setting*> newSettings)
     {
         settings.insert(settings.end(), newSettings.begin(), newSettings.end());
@@ -91,7 +98,6 @@ protected:
 
     KeyBinding keyBinding;
 
-
 private:
     const std::string name;
     const std::string description;
@@ -101,4 +107,4 @@ private:
     std::vector<Setting*> settings;
 };
 
-#endif //MINECRAFTANOTHERJNICHEAT_FEATURE_H
+#endif //MINECRAFTANOTHERJNICHEAT_FEATURE_

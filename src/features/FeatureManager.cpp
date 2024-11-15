@@ -15,6 +15,7 @@
 #include "impl/movement/EntityControl.h"
 #include "features/impl/combat/Reach.h"
 #include "features/impl/render/NoCameraClip.h"
+#include "features/impl/render/FreeCam.h"
 
 
 void FeatureManager::init() {
@@ -31,6 +32,7 @@ void FeatureManager::init() {
     initFeature(new EntityControl());
     initFeature(new Reach());
     initFeature(new NoCameraClip());
+    initFeature(new FreeCam());
 }
 
 Feature *FeatureManager::findFeatureByName(const std::string &name) {

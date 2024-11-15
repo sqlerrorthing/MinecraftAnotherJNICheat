@@ -57,3 +57,26 @@ void Listeners::onPacketSend(EventPacketSend &event) {
     }
 }
 
+void Listeners::onMove(EventMove &event) {
+    for (const auto& listener : listeners) {
+        listener->onMove(event);
+        if (event.cancelled) {
+            break;
+        }
+    }
+}
+
+void Listeners::onPlayerRespawn() {
+    for (const auto& listener : listeners) {
+        listener->onPlayerRespawn();
+    }
+}
+
+void Listeners::onSync(EventSync &event) {
+    for (const auto& listener : listeners) {
+        listener->onSync(event);
+        if (event.cancelled) {
+            break;
+        }
+    }
+}

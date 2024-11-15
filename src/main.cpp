@@ -63,6 +63,9 @@ void mainThread(HMODULE instance) {
     while (GetAsyncKeyState(VK_END) == 0) {
 
     }
+
+    FreeLibrary(instance);
+    stopConsole();
 }
 
 #pragma clang diagnostic pop

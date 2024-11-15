@@ -12,6 +12,8 @@
 
 #define JSTRING(str) (MinecraftSDK::env)->NewStringUTF(str.c_str())
 
+#define ENUM_ORDINAL(x) (MinecraftSDK::getEnumOrdinal(x))
+
 #define IS_INSTANCE(first, second) MinecraftSDK::env->IsInstanceOf(first, second)
 
 #define EQUALS(x, y) (MinecraftSDK::isObjectsEqual(x, y))

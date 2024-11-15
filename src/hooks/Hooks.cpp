@@ -3,9 +3,10 @@
 //
 
 #include "Hooks.hpp"
-
+#include <mutex>
 
 using namespace fmt;
+
 
 void hook(jmethodID method, void *native_hook_method, jmethodID *original_method) {
     println("[+++] Hooking {}", native_hook_method);
@@ -22,12 +23,6 @@ int Hooks::init() {
 
     println("[+] Initializing hooks...");
 
-    println("[++] WorldRenderer hooks..."); {
-        using namespace WorldRendererHooks;
-
-        hook(WorldRenderer::methodID_render(), reinterpret_cast<void *>(hkRender), &original_render);
-    }
-
     println("[++] Entity hooks..."); {
         using namespace EntityHooks;
 
@@ -43,9 +38,11 @@ int Hooks::init() {
     println("[++] Camera hooks..."); {
         using namespace CameraHooks;
 
+        hook(Camera::methodID_setPos(), reinterpret_cast<void *>(hkSetPos), &original_set_pos);
         hook(Camera::methodID_clipToSpace(), reinterpret_cast<void *>(hkClipToSpace), &original_clipToSpace);
+        hook(Camera::methodID_getSubmersionType(), reinterpret_cast<void *>(hkGetSubmersionType), &original_get_submersion_type);
+        hook(Camera::methodID_setRotation(), reinterpret_cast<void *>(hkSetRotation), &original_set_rotation);
     }
-
     println("[++] MinecraftClient hooks..."); {
         using namespace MinecraftClientHooks;
         hook(MinecraftClient::methodID_render(), reinterpret_cast<void *>(hkRender), &original_render_methodID);
@@ -61,14 +58,15 @@ int Hooks::init() {
         hook(ClientPlayerEntity::methodID_tick(), reinterpret_cast<void *>(hkTick), &original_tick_methodID);
         hook(ClientPlayerEntity::methodID_pushOutOfBlocks(), reinterpret_cast<void *>(hkPushOutOfBlocks), &original_push_out_of_blocks_methodID);
         hook(ClientPlayerEntity::methodID_tickNausea(), reinterpret_cast<void *>(hkTickNausea), &original_tick_nausea);
+        hook(ClientPlayerEntity::methodID_move(), reinterpret_cast<void *>(hkMove), &original_move);
+        hook(ClientPlayerEntity::methodID_sendMovementPackets(), reinterpret_cast<void *>(hkSendMovementPackets), &original_send_movement_packets);
     }
 
     println("[++] ClientConnection hooks..."); {
         using namespace ClientConnectionHooks;
-        jmethodID tmp;
 
         hook(ClientConnection::methodID_handlePacket(), reinterpret_cast<void *>(hkHandlePacket), &original_handle_packet);
-        hook(ClientConnection::methodID_send(), reinterpret_cast<void *>(hkSend), &tmp);
+        hook(ClientConnection::methodID_send(), reinterpret_cast<void *>(hkSend), nullptr);
     }
 
     println("[++] PlayerEntity hooks..."); {
@@ -88,6 +86,8 @@ int Hooks::init() {
 
         hook(LightmapTextureManager::methodID_getBrightness(), reinterpret_cast<void *>(hkGetBrightness), &original_get_brightness);
     }
+
+//    unfreezeAllThreads();
 
     return 0;
 }

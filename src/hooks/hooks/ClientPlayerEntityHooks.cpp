@@ -36,3 +36,37 @@ void ClientPlayerEntityHooks::hkTickNausea(JNIEnv *env, jobject obj, jboolean fr
 
     env->CallNonvirtualVoidMethod(obj, ClientPlayerEntity::self(), original_tick_nausea, fromPortalEffect);
 }
+
+jmethodID ClientPlayerEntityHooks::original_move;
+void ClientPlayerEntityHooks::hkMove(JNIEnv *env, jobject obj, jobject movementType, jobject movement) {
+    EventMove event(
+            static_cast<EventMove::MovementType>(ENUM_ORDINAL(movementType)),
+            Vec3d::get_field_x(movement),
+            Vec3d::get_field_y(movement),
+            Vec3d::get_field_z(movement)
+    );
+
+    Listeners::getInstance().onMove(event);
+
+    if(event.cancelled) {
+        return;
+    }
+
+    jmethodID constructor = env->GetMethodID(Vec3d::self(), "<init>", "(DDD)V");
+
+    env->CallNonvirtualVoidMethod(obj, ClientPlayerEntity::self(), original_move, movementType,
+                                  env->NewObject(Vec3d::self(), constructor, event.x, event.y, event.z));
+}
+
+jmethodID ClientPlayerEntityHooks::original_send_movement_packets;
+void ClientPlayerEntityHooks::hkSendMovementPackets(JNIEnv *env, jobject thiz) {
+    EventSync event(Entity::_getYaw(thiz), Entity::_getPitch(thiz));
+    Listeners::getInstance().onSync(event);
+
+    if(event.cancelled) {
+        return;
+    }
+
+    env->CallNonvirtualVoidMethod(thiz, ClientPlayerEntity::self(), original_send_movement_packets);
+
+}

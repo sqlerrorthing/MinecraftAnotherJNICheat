@@ -9,19 +9,19 @@
 
 /*
  * Minecraft class
- * Original: net.minecraft.client.option.KeyBinding
+ * Original: net.minecraft.client.option.CKeyBinding
  * Remapped: fgm
  */
-namespace KeyBinding {
+namespace CKeyBinding {
     static jclass self() {
         static jclass cachedClass = nullptr;
         if (cachedClass == nullptr) {
-            cachedClass = MinecraftSDK::env->FindClass(MinecraftSDK::getRemapped("fgm", "net/minecraft/client/KeyMapping", "net/minecraft/class_304", "net/minecraft/client/option/KeyBinding", "net/minecraft/src/C_3387_"));
+            cachedClass = MinecraftSDK::env->FindClass(MinecraftSDK::getRemapped("fgm", "net/minecraft/client/KeyMapping", "net/minecraft/class_304", "net/minecraft/client/option/CKeyBinding", "net/minecraft/src/C_3387_"));
         }
         return cachedClass;
     };
 
-    // getter for static private field net.minecraft.client.option.KeyBinding#KEYS_BY_ID
+    // getter for static private field net.minecraft.client.option.CKeyBinding#KEYS_BY_ID
     [[maybe_unused]] static jobject get_field_KEYS_BY_ID() {
         const auto clazz = self();
         const auto fieldID = MinecraftSDK::env->GetStaticFieldID(clazz, MinecraftSDK::getRemapped("h", "ALL", "field_1657", "KEYS_BY_ID", "f_90809_"), "Ljava/util/Map;");
@@ -30,14 +30,14 @@ namespace KeyBinding {
         return MinecraftSDK::env->GetStaticObjectField(clazz, fieldID);
     };
 
-    // setter for static private field net.minecraft.client.option.KeyBinding#KEYS_BY_ID
+    // setter for static private field net.minecraft.client.option.CKeyBinding#KEYS_BY_ID
     [[maybe_unused]] static void set_field_KEYS_BY_ID(const jobject &value) {
         const auto clazz = self();
         const auto fieldID = MinecraftSDK::env->GetStaticFieldID(clazz, MinecraftSDK::getRemapped("h", "ALL", "field_1657", "KEYS_BY_ID", "f_90809_"), "Ljava/util/Map;");
         return MinecraftSDK::env->SetStaticObjectField(clazz, fieldID, value);
     };
 
-    // getter for static private field net.minecraft.client.option.KeyBinding#KEY_TO_BINDINGS
+    // getter for static private field net.minecraft.client.option.CKeyBinding#KEY_TO_BINDINGS
     [[maybe_unused]] static jobject get_field_KEY_TO_BINDINGS() {
         const auto clazz = self();
         const auto fieldID = MinecraftSDK::env->GetStaticFieldID(clazz, MinecraftSDK::getRemapped("i", "MAP", "field_1658", "KEY_TO_BINDINGS", "f_90810_"), "Ljava/util/Map;");
@@ -46,14 +46,14 @@ namespace KeyBinding {
         return MinecraftSDK::env->GetStaticObjectField(clazz, fieldID);
     };
 
-    // setter for static private field net.minecraft.client.option.KeyBinding#KEY_TO_BINDINGS
+    // setter for static private field net.minecraft.client.option.CKeyBinding#KEY_TO_BINDINGS
     [[maybe_unused]] static void set_field_KEY_TO_BINDINGS(const jobject &value) {
         const auto clazz = self();
         const auto fieldID = MinecraftSDK::env->GetStaticFieldID(clazz, MinecraftSDK::getRemapped("i", "MAP", "field_1658", "KEY_TO_BINDINGS", "f_90810_"), "Ljava/util/Map;");
         return MinecraftSDK::env->SetStaticObjectField(clazz, fieldID, value);
     };
 
-    // getter for static private field net.minecraft.client.option.KeyBinding#KEY_CATEGORIES
+    // getter for static private field net.minecraft.client.option.CKeyBinding#KEY_CATEGORIES
     [[maybe_unused]] static jobject get_field_KEY_CATEGORIES() {
         const auto clazz = self();
         const auto fieldID = MinecraftSDK::env->GetStaticFieldID(clazz, MinecraftSDK::getRemapped("j", "CATEGORIES", "field_1652", "KEY_CATEGORIES", "f_90811_"), "Ljava/util/Set;");
@@ -62,14 +62,14 @@ namespace KeyBinding {
         return MinecraftSDK::env->GetStaticObjectField(clazz, fieldID);
     };
 
-    // setter for static private field net.minecraft.client.option.KeyBinding#KEY_CATEGORIES
+    // setter for static private field net.minecraft.client.option.CKeyBinding#KEY_CATEGORIES
     [[maybe_unused]] static void set_field_KEY_CATEGORIES(const jobject &value) {
         const auto clazz = self();
         const auto fieldID = MinecraftSDK::env->GetStaticFieldID(clazz, MinecraftSDK::getRemapped("j", "CATEGORIES", "field_1652", "KEY_CATEGORIES", "f_90811_"), "Ljava/util/Set;");
         return MinecraftSDK::env->SetStaticObjectField(clazz, fieldID, value);
     };
 
-    // getter for static public field net.minecraft.client.option.KeyBinding#MOVEMENT_CATEGORY
+    // getter for static public field net.minecraft.client.option.CKeyBinding#MOVEMENT_CATEGORY
     [[maybe_unused]] static jobject get_field_MOVEMENT_CATEGORY() {
         const auto clazz = self();
         const auto fieldID = MinecraftSDK::env->GetStaticFieldID(clazz, MinecraftSDK::getRemapped("a", "CATEGORY_MOVEMENT", "field_32136", "MOVEMENT_CATEGORY", "f_167805_"), "Ljava/lang/String;");
@@ -78,14 +78,14 @@ namespace KeyBinding {
         return MinecraftSDK::env->GetStaticObjectField(clazz, fieldID);
     };
 
-    // setter for static public field net.minecraft.client.option.KeyBinding#MOVEMENT_CATEGORY
+    // setter for static public field net.minecraft.client.option.CKeyBinding#MOVEMENT_CATEGORY
     [[maybe_unused]] static void set_field_MOVEMENT_CATEGORY(const jobject &value) {
         const auto clazz = self();
         const auto fieldID = MinecraftSDK::env->GetStaticFieldID(clazz, MinecraftSDK::getRemapped("a", "CATEGORY_MOVEMENT", "field_32136", "MOVEMENT_CATEGORY", "f_167805_"), "Ljava/lang/String;");
         return MinecraftSDK::env->SetStaticObjectField(clazz, fieldID, value);
     };
 
-    // getter for static public field net.minecraft.client.option.KeyBinding#MISC_CATEGORY
+    // getter for static public field net.minecraft.client.option.CKeyBinding#MISC_CATEGORY
     [[maybe_unused]] static jobject get_field_MISC_CATEGORY() {
         const auto clazz = self();
         const auto fieldID = MinecraftSDK::env->GetStaticFieldID(clazz, MinecraftSDK::getRemapped("b", "CATEGORY_MISC", "field_32137", "MISC_CATEGORY", "f_167806_"), "Ljava/lang/String;");
@@ -94,14 +94,14 @@ namespace KeyBinding {
         return MinecraftSDK::env->GetStaticObjectField(clazz, fieldID);
     };
 
-    // setter for static public field net.minecraft.client.option.KeyBinding#MISC_CATEGORY
+    // setter for static public field net.minecraft.client.option.CKeyBinding#MISC_CATEGORY
     [[maybe_unused]] static void set_field_MISC_CATEGORY(const jobject &value) {
         const auto clazz = self();
         const auto fieldID = MinecraftSDK::env->GetStaticFieldID(clazz, MinecraftSDK::getRemapped("b", "CATEGORY_MISC", "field_32137", "MISC_CATEGORY", "f_167806_"), "Ljava/lang/String;");
         return MinecraftSDK::env->SetStaticObjectField(clazz, fieldID, value);
     };
 
-    // getter for static public field net.minecraft.client.option.KeyBinding#MULTIPLAYER_CATEGORY
+    // getter for static public field net.minecraft.client.option.CKeyBinding#MULTIPLAYER_CATEGORY
     [[maybe_unused]] static jobject get_field_MULTIPLAYER_CATEGORY() {
         const auto clazz = self();
         const auto fieldID = MinecraftSDK::env->GetStaticFieldID(clazz, MinecraftSDK::getRemapped("c", "CATEGORY_MULTIPLAYER", "field_32138", "MULTIPLAYER_CATEGORY", "f_167807_"), "Ljava/lang/String;");
@@ -110,14 +110,14 @@ namespace KeyBinding {
         return MinecraftSDK::env->GetStaticObjectField(clazz, fieldID);
     };
 
-    // setter for static public field net.minecraft.client.option.KeyBinding#MULTIPLAYER_CATEGORY
+    // setter for static public field net.minecraft.client.option.CKeyBinding#MULTIPLAYER_CATEGORY
     [[maybe_unused]] static void set_field_MULTIPLAYER_CATEGORY(const jobject &value) {
         const auto clazz = self();
         const auto fieldID = MinecraftSDK::env->GetStaticFieldID(clazz, MinecraftSDK::getRemapped("c", "CATEGORY_MULTIPLAYER", "field_32138", "MULTIPLAYER_CATEGORY", "f_167807_"), "Ljava/lang/String;");
         return MinecraftSDK::env->SetStaticObjectField(clazz, fieldID, value);
     };
 
-    // getter for static public field net.minecraft.client.option.KeyBinding#GAMEPLAY_CATEGORY
+    // getter for static public field net.minecraft.client.option.CKeyBinding#GAMEPLAY_CATEGORY
     [[maybe_unused]] static jobject get_field_GAMEPLAY_CATEGORY() {
         const auto clazz = self();
         const auto fieldID = MinecraftSDK::env->GetStaticFieldID(clazz, MinecraftSDK::getRemapped("d", "CATEGORY_GAMEPLAY", "field_32139", "GAMEPLAY_CATEGORY", "f_167808_"), "Ljava/lang/String;");
@@ -126,14 +126,14 @@ namespace KeyBinding {
         return MinecraftSDK::env->GetStaticObjectField(clazz, fieldID);
     };
 
-    // setter for static public field net.minecraft.client.option.KeyBinding#GAMEPLAY_CATEGORY
+    // setter for static public field net.minecraft.client.option.CKeyBinding#GAMEPLAY_CATEGORY
     [[maybe_unused]] static void set_field_GAMEPLAY_CATEGORY(const jobject &value) {
         const auto clazz = self();
         const auto fieldID = MinecraftSDK::env->GetStaticFieldID(clazz, MinecraftSDK::getRemapped("d", "CATEGORY_GAMEPLAY", "field_32139", "GAMEPLAY_CATEGORY", "f_167808_"), "Ljava/lang/String;");
         return MinecraftSDK::env->SetStaticObjectField(clazz, fieldID, value);
     };
 
-    // getter for static public field net.minecraft.client.option.KeyBinding#INVENTORY_CATEGORY
+    // getter for static public field net.minecraft.client.option.CKeyBinding#INVENTORY_CATEGORY
     [[maybe_unused]] static jobject get_field_INVENTORY_CATEGORY() {
         const auto clazz = self();
         const auto fieldID = MinecraftSDK::env->GetStaticFieldID(clazz, MinecraftSDK::getRemapped("e", "CATEGORY_INVENTORY", "field_32140", "INVENTORY_CATEGORY", "f_167809_"), "Ljava/lang/String;");
@@ -142,14 +142,14 @@ namespace KeyBinding {
         return MinecraftSDK::env->GetStaticObjectField(clazz, fieldID);
     };
 
-    // setter for static public field net.minecraft.client.option.KeyBinding#INVENTORY_CATEGORY
+    // setter for static public field net.minecraft.client.option.CKeyBinding#INVENTORY_CATEGORY
     [[maybe_unused]] static void set_field_INVENTORY_CATEGORY(const jobject &value) {
         const auto clazz = self();
         const auto fieldID = MinecraftSDK::env->GetStaticFieldID(clazz, MinecraftSDK::getRemapped("e", "CATEGORY_INVENTORY", "field_32140", "INVENTORY_CATEGORY", "f_167809_"), "Ljava/lang/String;");
         return MinecraftSDK::env->SetStaticObjectField(clazz, fieldID, value);
     };
 
-    // getter for static public field net.minecraft.client.option.KeyBinding#UI_CATEGORY
+    // getter for static public field net.minecraft.client.option.CKeyBinding#UI_CATEGORY
     [[maybe_unused]] static jobject get_field_UI_CATEGORY() {
         const auto clazz = self();
         const auto fieldID = MinecraftSDK::env->GetStaticFieldID(clazz, MinecraftSDK::getRemapped("f", "CATEGORY_INTERFACE", "field_32141", "UI_CATEGORY", "f_167810_"), "Ljava/lang/String;");
@@ -158,14 +158,14 @@ namespace KeyBinding {
         return MinecraftSDK::env->GetStaticObjectField(clazz, fieldID);
     };
 
-    // setter for static public field net.minecraft.client.option.KeyBinding#UI_CATEGORY
+    // setter for static public field net.minecraft.client.option.CKeyBinding#UI_CATEGORY
     [[maybe_unused]] static void set_field_UI_CATEGORY(const jobject &value) {
         const auto clazz = self();
         const auto fieldID = MinecraftSDK::env->GetStaticFieldID(clazz, MinecraftSDK::getRemapped("f", "CATEGORY_INTERFACE", "field_32141", "UI_CATEGORY", "f_167810_"), "Ljava/lang/String;");
         return MinecraftSDK::env->SetStaticObjectField(clazz, fieldID, value);
     };
 
-    // getter for static public field net.minecraft.client.option.KeyBinding#CREATIVE_CATEGORY
+    // getter for static public field net.minecraft.client.option.CKeyBinding#CREATIVE_CATEGORY
     [[maybe_unused]] static jobject get_field_CREATIVE_CATEGORY() {
         const auto clazz = self();
         const auto fieldID = MinecraftSDK::env->GetStaticFieldID(clazz, MinecraftSDK::getRemapped("g", "CATEGORY_CREATIVE", "field_32142", "CREATIVE_CATEGORY", "f_167811_"), "Ljava/lang/String;");
@@ -174,14 +174,14 @@ namespace KeyBinding {
         return MinecraftSDK::env->GetStaticObjectField(clazz, fieldID);
     };
 
-    // setter for static public field net.minecraft.client.option.KeyBinding#CREATIVE_CATEGORY
+    // setter for static public field net.minecraft.client.option.CKeyBinding#CREATIVE_CATEGORY
     [[maybe_unused]] static void set_field_CREATIVE_CATEGORY(const jobject &value) {
         const auto clazz = self();
         const auto fieldID = MinecraftSDK::env->GetStaticFieldID(clazz, MinecraftSDK::getRemapped("g", "CATEGORY_CREATIVE", "field_32142", "CREATIVE_CATEGORY", "f_167811_"), "Ljava/lang/String;");
         return MinecraftSDK::env->SetStaticObjectField(clazz, fieldID, value);
     };
 
-    // getter for static private field net.minecraft.client.option.KeyBinding#CATEGORY_ORDER_MAP
+    // getter for static private field net.minecraft.client.option.CKeyBinding#CATEGORY_ORDER_MAP
     [[maybe_unused]] static jobject get_field_CATEGORY_ORDER_MAP() {
         const auto clazz = self();
         const auto fieldID = MinecraftSDK::env->GetStaticFieldID(clazz, MinecraftSDK::getRemapped("k", "CATEGORY_SORT_ORDER", "field_1656", "CATEGORY_ORDER_MAP", "f_90812_"), "Ljava/util/Map;");
@@ -190,14 +190,14 @@ namespace KeyBinding {
         return MinecraftSDK::env->GetStaticObjectField(clazz, fieldID);
     };
 
-    // setter for static private field net.minecraft.client.option.KeyBinding#CATEGORY_ORDER_MAP
+    // setter for static private field net.minecraft.client.option.CKeyBinding#CATEGORY_ORDER_MAP
     [[maybe_unused]] static void set_field_CATEGORY_ORDER_MAP(const jobject &value) {
         const auto clazz = self();
         const auto fieldID = MinecraftSDK::env->GetStaticFieldID(clazz, MinecraftSDK::getRemapped("k", "CATEGORY_SORT_ORDER", "field_1656", "CATEGORY_ORDER_MAP", "f_90812_"), "Ljava/util/Map;");
         return MinecraftSDK::env->SetStaticObjectField(clazz, fieldID, value);
     };
 
-    // getter for private field net.minecraft.client.option.KeyBinding#translationKey
+    // getter for private field net.minecraft.client.option.CKeyBinding#translationKey
     static jobject get_field_translationKey(const jobject &obj) {
         const auto fieldID = MinecraftSDK::env->GetFieldID(self(), MinecraftSDK::getRemapped("l", "name", "field_1660", "translationKey", "f_90813_"), "Ljava/lang/String;");
         if(fieldID == nullptr) { return 0; }
@@ -205,13 +205,13 @@ namespace KeyBinding {
         return MinecraftSDK::env->GetObjectField(obj, fieldID);
     };
 
-    // setter for static private field net.minecraft.client.option.KeyBinding#translationKey
+    // setter for static private field net.minecraft.client.option.CKeyBinding#translationKey
     static void set_field_translationKey(const jobject &obj, const jobject &value) {
         const auto fieldID = MinecraftSDK::env->GetFieldID(self(), MinecraftSDK::getRemapped("l", "name", "field_1660", "translationKey", "f_90813_"), "Ljava/lang/String;");
         return MinecraftSDK::env->SetObjectField(obj, fieldID, value);
     };
 
-    // getter for private field net.minecraft.client.option.KeyBinding#defaultKey
+    // getter for private field net.minecraft.client.option.CKeyBinding#defaultKey
     static jobject get_field_defaultKey(const jobject &obj) {
         const auto fieldID = MinecraftSDK::env->GetFieldID(self(), MinecraftSDK::getRemapped("m", "defaultKey", "field_1654", "defaultKey", "f_90814_"), "Lfae$a;");
         if(fieldID == nullptr) { return 0; }
@@ -219,13 +219,13 @@ namespace KeyBinding {
         return MinecraftSDK::env->GetObjectField(obj, fieldID);
     };
 
-    // setter for static private field net.minecraft.client.option.KeyBinding#defaultKey
+    // setter for static private field net.minecraft.client.option.CKeyBinding#defaultKey
     static void set_field_defaultKey(const jobject &obj, const jobject &value) {
         const auto fieldID = MinecraftSDK::env->GetFieldID(self(), MinecraftSDK::getRemapped("m", "defaultKey", "field_1654", "defaultKey", "f_90814_"), "Lfae$a;");
         return MinecraftSDK::env->SetObjectField(obj, fieldID, value);
     };
 
-    // getter for private field net.minecraft.client.option.KeyBinding#category
+    // getter for private field net.minecraft.client.option.CKeyBinding#category
     static jobject get_field_category(const jobject &obj) {
         const auto fieldID = MinecraftSDK::env->GetFieldID(self(), MinecraftSDK::getRemapped("n", "category", "field_1659", "category", "f_90815_"), "Ljava/lang/String;");
         if(fieldID == nullptr) { return 0; }
@@ -233,13 +233,13 @@ namespace KeyBinding {
         return MinecraftSDK::env->GetObjectField(obj, fieldID);
     };
 
-    // setter for static private field net.minecraft.client.option.KeyBinding#category
+    // setter for static private field net.minecraft.client.option.CKeyBinding#category
     static void set_field_category(const jobject &obj, const jobject &value) {
         const auto fieldID = MinecraftSDK::env->GetFieldID(self(), MinecraftSDK::getRemapped("n", "category", "field_1659", "category", "f_90815_"), "Ljava/lang/String;");
         return MinecraftSDK::env->SetObjectField(obj, fieldID, value);
     };
 
-    // getter for private field net.minecraft.client.option.KeyBinding#boundKey
+    // getter for private field net.minecraft.client.option.CKeyBinding#boundKey
     static jobject get_field_boundKey(const jobject &obj) {
         const auto fieldID = MinecraftSDK::env->GetFieldID(self(), MinecraftSDK::getRemapped("o", "key", "field_1655", "boundKey", "f_90816_"), "Lfae$a;");
         if(fieldID == nullptr) { return 0; }
@@ -247,13 +247,13 @@ namespace KeyBinding {
         return MinecraftSDK::env->GetObjectField(obj, fieldID);
     };
 
-    // setter for static private field net.minecraft.client.option.KeyBinding#boundKey
+    // setter for static private field net.minecraft.client.option.CKeyBinding#boundKey
     static void set_field_boundKey(const jobject &obj, const jobject &value) {
         const auto fieldID = MinecraftSDK::env->GetFieldID(self(), MinecraftSDK::getRemapped("o", "key", "field_1655", "boundKey", "f_90816_"), "Lfae$a;");
         return MinecraftSDK::env->SetObjectField(obj, fieldID, value);
     };
 
-    // getter for private field net.minecraft.client.option.KeyBinding#pressed
+    // getter for private field net.minecraft.client.option.CKeyBinding#pressed
     static jboolean get_field_pressed(const jobject &obj) {
         const auto fieldID = MinecraftSDK::env->GetFieldID(self(), MinecraftSDK::getRemapped("p", "isDown", "field_1653", "pressed", "f_90817_"), "Z");
         if(fieldID == nullptr) { return 0; }
@@ -261,13 +261,13 @@ namespace KeyBinding {
         return MinecraftSDK::env->GetBooleanField(obj, fieldID);
     };
 
-    // setter for static private field net.minecraft.client.option.KeyBinding#pressed
+    // setter for static private field net.minecraft.client.option.CKeyBinding#pressed
     static void set_field_pressed(const jobject &obj, const jboolean &value) {
         const auto fieldID = MinecraftSDK::env->GetFieldID(self(), MinecraftSDK::getRemapped("p", "isDown", "field_1653", "pressed", "f_90817_"), "Z");
         return MinecraftSDK::env->SetBooleanField(obj, fieldID, value);
     };
 
-    // getter for private field net.minecraft.client.option.KeyBinding#timesPressed
+    // getter for private field net.minecraft.client.option.CKeyBinding#timesPressed
     static jint get_field_timesPressed(const jobject &obj) {
         const auto fieldID = MinecraftSDK::env->GetFieldID(self(), MinecraftSDK::getRemapped("q", "clickCount", "field_1661", "timesPressed", "f_90818_"), "I");
         if(fieldID == nullptr) { return 0; }
@@ -275,7 +275,7 @@ namespace KeyBinding {
         return MinecraftSDK::env->GetIntField(obj, fieldID);
     };
 
-    // setter for static private field net.minecraft.client.option.KeyBinding#timesPressed
+    // setter for static private field net.minecraft.client.option.CKeyBinding#timesPressed
     static void set_field_timesPressed(const jobject &obj, const jint &value) {
         const auto fieldID = MinecraftSDK::env->GetFieldID(self(), MinecraftSDK::getRemapped("q", "clickCount", "field_1661", "timesPressed", "f_90818_"), "I");
         return MinecraftSDK::env->SetIntField(obj, fieldID, value);

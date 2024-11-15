@@ -16,6 +16,10 @@ public:
         return value;
     }
 
+    explicit operator bool() const {
+        return value;
+    }
+
     void set(bool newValue) {
         Checkbox::value = newValue;
     }
@@ -63,12 +67,16 @@ public:
     MultiCheckboxList(const std::string &name, const std::map<std::string, bool> &modes, const std::function<bool()> &visible = []() -> bool { return true; })
             : Setting(name, visible), modes(modes) {}
 
-    [[nodiscard]] bool is(const std::string& name) {
+    [[nodiscard]] bool is(const std::string& name) const {
         auto it = modes.find(name);
         if (it != modes.end()) {
             return it->second;
         }
         return false;
+    }
+
+    bool operator==(const std::string &name) const {
+        return is(name);
     }
 
     [[nodiscard]] bool is(size_t index) const {
@@ -79,6 +87,10 @@ public:
         auto it = modes.begin();
         std::advance(it, index);
         return it->second;
+    }
+
+    bool operator==(size_t index) const {
+        return is(index);
     }
 
     void set(const std::string& name, bool value) {

@@ -15,6 +15,8 @@
 class GlobalEventListener : public Listener {
 protected:
     void onKey(EventOnKey &event) override;
+
+    void onPacketReceived(EventPacketReceived &event) override;
 };
 
 
